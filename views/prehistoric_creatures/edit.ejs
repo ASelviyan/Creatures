@@ -1,0 +1,10 @@
+<h3>Editing in progress</h3>
+<form method="POST" action="/creatures/<%=index%>/?_method=PUT">
+    <label for="creatureType">Name</label>
+    <input type="text" id="creatureType" name="type" value='<%=myCreatures.type%>'/>
+
+    <label for="creatureType">Image</label>
+    <input type="text" id="creatureType" name="img_url" value='<%=myCreatures.img_url%>'/>
+    
+    <button type="submit">Edit Creature</button>
+</form>
