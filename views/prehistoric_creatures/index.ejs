@@ -1,8 +1,13 @@
 <h1>CREATURES</h1>
 
-<% myCreature.forEach(creature => { %>
+<% myCreature.forEach((creature, index) => { %>
     <li>
         <%=creature.type%> 
         <img src="<%=creature.img_url%>" width='400' height='auto'/>
+        <a href="/creatures/edit/<%= index%>">Edit</a>
+
+        <form method="POST" action="/creatures/<%= index %>/?_method=DELETE">
+            <button type="submit">DELETE</button>
+        </form>                                                     
     </li>
 <% }) %>

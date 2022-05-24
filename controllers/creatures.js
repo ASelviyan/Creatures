@@ -49,4 +49,29 @@ router.get('/edit/:id', (req, res) => {
      res.redirect('/creatures')
 })
 
+router.put('/:id', (req, res) => {
+     let creatures = fs.readFileSync('./prehistoric_creatures.json')
+    let creaturesData = JSON.parse(creatures)
+    
+    let index = req.params.id
+    creaturesData[index].type = req.body.type
+    creaturesData[index].img_url = req.body.img_url
+
+    fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creaturesData))
+    res.redirect('/creatures')
+
+})
+
+//DELETE A CREATURE
+router.delete('/:id', (req, res) =>{
+    let creatures = fs.readFileSync('./prehistoric_creatures.json')
+    let creaturesData = JSON.parse(creatures)
+    
+    creaturesData.splice(req.params.id, 1)
+    console.log(JSON.stringify(creaturesData))
+
+    fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creaturesData))
+     res.redirect('/creatures')
+})
+
 module.exports = router 
